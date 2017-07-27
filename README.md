@@ -1,5 +1,8 @@
 Agent sample app 
 ================
+
+Chat frontend: http://essentnlchatbot.azurewebsites.net (right side)
+
 Agent simulator app.
 This is a virtual agent simulator built over the Chat Agent API.
 In this demo the simulator implements the following Chat Agent API endpoints:
