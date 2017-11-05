@@ -3,8 +3,8 @@ const agentBot = require('./lib/agentBot');
 //TODO: Hardcoded value's to config file or env variables.
 // please be nice and dont steal this (:
 const agent = new agentBot(63494234, "essentBot", "essent123");
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 
 var bodyParser = require('body-parser');
 
@@ -37,7 +37,8 @@ app.use(function(err, req, res, next) {
         error: err
     });
 });
-app.listen(3000);
+var port = process.env.PORT || 1337;
+app.listen(port);
 
 module.exports = app;
 
