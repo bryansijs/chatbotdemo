@@ -6,7 +6,7 @@ var newAmount = 0;
 
 module.exports = function (  ) {
 
-    router.get('/',function (req,res,next) {
+    router.get('/webhook',function (req,res,next) {
         res.send('hello');
     })
 
