@@ -39,27 +39,6 @@ module.exports = function (  ) {
         if ( action === 'ChangeBBA.ChangeBBA-custom' ) {
             output.speech = answer.speech.replace( '[[newAmount]]', newAmount );
             res.json( output );
-        } else if ( action === 'budgetbill-change-amount.value' ) {
-            newAmount = req.body.result.parameters.amount;
-
-            if (parseFloat(amount) && amount > 999) {
-                output.speech = 'Sorry, dit bedrag is te hoog. Je termijnbedrag mag niet meer dan 999 euro zijn. Kun je een nieuw bedrag opgeven?';
-                output.contextOut = [ { "name": "budgetbill-change-allow", "lifespan": 1 } ];
-            } else {
-                output.contextOut = [ { "name": "budgetbill-change-confirm", "lifespan": 1, "parameters":{"amount": amount} } ];
-            }
-
-            res.json( output );
-
-        } else if ( action === 'budgetbill-change.confirmed' ) {
-            var toAmount = Math.round( parseFloat( req.body.result.parameters.amount ) );
-
-            require( '../intents/budget-bill-change-amount-change' )( dbConnection, toAmount ).then( function () {
-                output.speech = answer.speech.replace( '[[amount]]', toAmount );
-                res.json( output );
-            } ).catch( function ( err ) {
-                res.status( 500 ).send( err );
-            } );
         }
     });
     return router;
