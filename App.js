@@ -7,20 +7,10 @@ const express = require('express')
 const app = express()
 
 var bodyParser = require('body-parser');
-var mysql = require('mysql');
-
-//Database connection
-var connection = mysql.createConnection({
-    host     : 'hackathon-chatbot-cluster.cluster-cwbrjhdyug3y.eu-west-1.rds.amazonaws.com',
-    user     : 'admin',
-    password : 'adminadmin',
-    database : 'chatbot'
-});
-connection.connect();
 
 //routes
 
-var index = require('./routes/index')(connection);
+var index = require('./routes/index')();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

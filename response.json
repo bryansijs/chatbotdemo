@@ -1,0 +1,78 @@
+{
+  "id": "e5d779a7-2840-4356-bdf1-40c92dbea13e",
+  "timestamp": "2017-11-05T16:22:24.916Z",
+  "lang": "en",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "ik wil graag mijn termijnbedrag aanpassen naar 50 euro",
+    "action": "ChangeBBA.ChangeBBA-custom",
+    "actionIncomplete": false,
+    "parameters": {
+      "currency-name": [],
+      "number": [],
+      "unit-currency": [
+        {
+          "amount": 50,
+          "currency": "EUR"
+        }
+      ]
+    },
+    "contexts": [
+      {
+        "name": "changebba-amount-followup-2",
+        "parameters": {
+          "number": [],
+          "currency-name.original": "",
+          "unit-currency": [
+            {
+              "amount": 50,
+              "currency": "EUR"
+            }
+          ],
+          "unit-currency.original": "50 euro",
+          "number.original": "",
+          "currency-name": []
+        },
+        "lifespan": 2
+      },
+      {
+        "name": "changebba-amount-followup",
+        "parameters": {
+          "number": [],
+          "currency-name.original": "",
+          "unit-currency": [
+            {
+              "amount": 50,
+              "currency": "EUR"
+            }
+          ],
+          "unit-currency.original": "50 euro",
+          "number.original": "",
+          "currency-name": []
+        },
+        "lifespan": 2
+      }
+    ],
+    "metadata": {
+      "intentId": "05997c69-7a28-410b-83c1-19298017c737",
+      "webhookUsed": "false",
+      "webhookForSlotFillingUsed": "false",
+      "intentName": "Change BBA - Amount"
+    },
+    "fulfillment": {
+      "speech": "Weet je zeker dat ik je termijnbedrag moet aanpassen naar €[[newAmount]]?",
+      "messages": [
+        {
+          "type": 0,
+          "speech": "Ben je er zeker van dat je je termijnbedrag wilt wijzigen in €[[newAmount]]?"
+        }
+      ]
+    },
+    "score": 1
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success"
+  },
+  "sessionId": "7844f4ac5b02f8e61186ddK8389166"
+}

@@ -20,6 +20,7 @@ module.exports = function (  ) {
         var action = req.body.result.action;
         var query = req.body.result.resolvedQuery;
         var answer = req.body.result.fulfillment;
+        var newAmount = req.body.result.parameters.unit-currency[0].amount;
 
 
         // Log all queries
@@ -33,8 +34,8 @@ module.exports = function (  ) {
         console.log( "Query: ", query );
         console.log( "Answer: ", answer );
 
-        if ( action === 'budgetbill-change.start' ) {
-            output.speech = answer.speech.replace( '[[amount]]', amount );
+        if ( action === 'ChangeBBA.ChangeBBA-custom' ) {
+            output.speech = answer.speech.replace( '[[newAmount]]', newAmount );
             res.json( output );
         } else if ( action === 'budgetbill-change-amount.value' ) {
             newAmount = req.body.result.parameters.amount;
@@ -57,30 +58,7 @@ module.exports = function (  ) {
             } ).catch( function ( err ) {
                 res.status( 500 ).send( err );
             } );
-
-        }});
-
-    function writeNewBBA(userId, bba) {
-        firebase.database().ref('/').set({
-            bba: bba
-        });
-    }
-
-    var ref = firebase.database().ref("/");
-
-    ref.once(1, function(data) {
-        // do some stuff once
+        }
     });
-
-
-// Attach an asynchronous callback to read the data at our posts reference
-    ref.on("value", function(snapshot) {
-        console.log(snapshot.val());
-    }, function (errorObject) {
-        console.log("The read failed: " + errorObject.code);
-    });
-
-
-
     return router;
 };
