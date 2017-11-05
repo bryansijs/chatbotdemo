@@ -2,6 +2,9 @@
   "name": "agent-sample-app",
   "description": "Agent sample app",
   "version": "0.0.1",
+  "engines": {
+    "node": "8.7.0"
+  },
   "scripts": {
     "start": "node ./App.js"
   },
